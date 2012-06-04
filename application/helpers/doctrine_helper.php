@@ -1,11 +1,15 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 // system/application/plugins/doctrine_helper.php
 
 // load Doctrine library
-require_once APPPATH.'/helpers/doctrine/lib/Doctrine.php';
+require_once APPPATH.'helpers/doctrine/Doctrine.php';
 
 // load database configuration from CodeIgniter
-require_once APPPATH.'/config/database.php';
+require_once APPPATH.'config/database.php';
 
 // this will allow Doctrine to load Model classes automatically
 spl_autoload_register(array('Doctrine', 'autoload'));
@@ -26,10 +30,10 @@ foreach ($db as $connection_name => $db_values) {
 }
 
 // CodeIgniter's Model class needs to be loaded
-require_once BASEPATH.'/libraries/Model.php';
+require_once BASEPATH.'core/Model.php';
 
 // telling Doctrine where our models are located
-Doctrine::loadModels(APPPATH.'/models');
+Doctrine::loadModels(APPPATH.'models');
 
 // (OPTIONAL) CONFIGURATION BELOW
 
